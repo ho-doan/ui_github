@@ -1,6 +1,5 @@
 import 'dart:developer';
 
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
@@ -11,10 +10,12 @@ class WidgetReview extends StatelessWidget {
     super.key,
     required this.text,
     required this.child,
+    required this.isFrame,
   });
 
   final String text;
   final Widget child;
+  final bool isFrame;
 
   @override
   Widget build(BuildContext context) {
@@ -36,7 +37,7 @@ class WidgetReview extends StatelessWidget {
             child: ElevatedButton(
               onPressed: () {
                 try {
-                  if (kIsWeb && html.window.parent != null) {
+                  if (isFrame) {
                     html.window.parent?.postMessage({
                       'type': 'copy-to-clipboard',
                       'data': text,
