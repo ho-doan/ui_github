@@ -20,7 +20,7 @@ class WidgetReview extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      constraints: const BoxConstraints(maxHeight: 300),
+      constraints: const BoxConstraints(maxWidth: 300),
       child: Stack(
         children: [
           AspectRatio(
