@@ -12,17 +12,21 @@ List<RouteBase> get $appRoutes => [
     ];
 
 RouteBase get $detailRoute => GoRouteData.$route(
-      path: '/detail/:frame',
+      path: '/detail',
       factory: $DetailRouteExtension._fromState,
     );
 
 extension $DetailRouteExtension on DetailRoute {
   static DetailRoute _fromState(GoRouterState state) => DetailRoute(
-        frame: _$boolConverter(state.pathParameters['frame']!),
+        frame: _$convertMapValue(
+            'frame', state.uri.queryParameters, _$boolConverter),
       );
 
   String get location => GoRouteData.$location(
-        '/detail/${Uri.encodeComponent(frame!.toString())}',
+        '/detail',
+        queryParams: {
+          if (frame != null) 'frame': frame!.toString(),
+        },
       );
 
   void go(BuildContext context) => context.go(location);
@@ -33,6 +37,15 @@ extension $DetailRouteExtension on DetailRoute {
       context.pushReplacement(location);
 
   void replace(BuildContext context) => context.replace(location);
+}
+
+T? _$convertMapValue<T>(
+  String key,
+  Map<String, String> map,
+  T Function(String) converter,
+) {
+  final value = map[key];
+  return value == null ? null : converter(value);
 }
 
 bool _$boolConverter(String value) {
@@ -72,13 +85,4 @@ extension $RootRouteExtension on RootRoute {
       context.pushReplacement(location);
 
   void replace(BuildContext context) => context.replace(location);
-}
-
-T? _$convertMapValue<T>(
-  String key,
-  Map<String, String> map,
-  T Function(String) converter,
-) {
-  final value = map[key];
-  return value == null ? null : converter(value);
 }

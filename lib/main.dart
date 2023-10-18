@@ -6,8 +6,10 @@ import 'package:flutter_web_plugins/flutter_web_plugins.dart';
 import 'core/router/routers.dart';
 
 void main() {
+  WidgetsFlutterBinding.ensureInitialized();
   if (kIsWeb) {
     usePathUrlStrategy();
+    // setUrlStrategy(PathUrlStrategy());
   }
   runApp(const MyApp());
 }

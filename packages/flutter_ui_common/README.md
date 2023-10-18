@@ -9,6 +9,11 @@
 
 ## Features
 
+- [segmented](https://github.com/hadukin/custom_sliding_segmented_control/blob/main/lib/src/widget.dart)
+- [badges](https://pub.dev/packages/badges)
+- [progress indicator](https://pub.dev/packages/percent_indicator)
+- [snackbar](https://pub.dev/packages/awesome_snackbar_content)
+
 - Sample ui flutter
 - demo: [link](https://ho-doan.github.io/)
 - vscode extension: [link](https://marketplace.visualstudio.com/items?itemName=HoDoan.bloc-flow)
