@@ -181,6 +181,63 @@ class _MyHomePageState extends State<HomePage> {
                       });
                 }),
               ),
+              WidgetReview(
+                isFrame: widget.isFrame,
+                text: cardElevatedWidget,
+                child: CardWidget.elevated(
+                  icon: const Icon(Icons.more_horiz),
+                  child: Container(
+                    constraints: const BoxConstraints(
+                      maxWidth: 200,
+                      minWidth: 150,
+                    ),
+                    child: const AspectRatio(
+                      aspectRatio: 1,
+                      child: Center(
+                        child: Text('Card'),
+                      ),
+                    ),
+                  ),
+                ),
+              ),
+              WidgetReview(
+                isFrame: widget.isFrame,
+                text: cardFilledWidget,
+                child: CardWidget.filled(
+                  icon: const Icon(Icons.more_horiz),
+                  child: Container(
+                    constraints: const BoxConstraints(
+                      maxWidth: 200,
+                      minWidth: 150,
+                    ),
+                    child: const AspectRatio(
+                      aspectRatio: 1,
+                      child: Center(
+                        child: Text('Card'),
+                      ),
+                    ),
+                  ),
+                ),
+              ),
+              WidgetReview(
+                isFrame: widget.isFrame,
+                text: cardOutlinedWidget,
+                child: CardWidget.outlined(
+                  icon: const Icon(Icons.more_horiz),
+                  child: Container(
+                    constraints: const BoxConstraints(
+                      maxWidth: 200,
+                      minWidth: 150,
+                    ),
+                    child: const AspectRatio(
+                      aspectRatio: 1,
+                      child: Center(
+                        child: Text('Card'),
+                      ),
+                    ),
+                  ),
+                ),
+              ),
             ],
           ),
         ),

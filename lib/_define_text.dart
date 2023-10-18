@@ -122,3 +122,51 @@ Builder(builder: (context) {
         );
       });
 })''';
+const String cardElevatedWidget = '''
+CardWidget.elevated(
+  icon: const Icon(Icons.more_horiz),
+  child: Container(
+    constraints: const BoxConstraints(
+      maxWidth: 200,
+      minWidth: 150,
+    ),
+    child: const AspectRatio(
+      aspectRatio: 1,
+      child: Center(
+        child: Text('data'),
+      ),
+    ),
+  ),
+)''';
+const String cardFilledWidget = '''
+CardWidget.filled(
+  icon: const Icon(Icons.more_horiz),
+  child: Container(
+    constraints: const BoxConstraints(
+      maxWidth: 200,
+      minWidth: 150,
+    ),
+    child: const AspectRatio(
+      aspectRatio: 1,
+      child: Center(
+        child: Text('data'),
+      ),
+    ),
+  ),
+)''';
+const String cardOutlinedWidget = '''
+CardWidget.outlined(
+  icon: const Icon(Icons.more_horiz),
+  child: Container(
+    constraints: const BoxConstraints(
+      maxWidth: 200,
+      minWidth: 150,
+    ),
+    child: const AspectRatio(
+      aspectRatio: 1,
+      child: Center(
+        child: Text('data'),
+      ),
+    ),
+  ),
+)''';

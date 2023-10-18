@@ -9,6 +9,7 @@ rm -r ./ho-doan.github.io/icons
 flutter build web
 cp -r ./build/web/. ./ho-doan.github.io/
 cd ./ho-doan.github.io
+cp -v index.html 404.html
 git add .
 git commit -m update-ui
 git push origin master
