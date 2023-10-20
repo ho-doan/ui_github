@@ -15,15 +15,19 @@ class CardWidget extends StatelessWidget {
   factory CardWidget.elevated({
     Key? key,
     Color backgroundColor = Colors.purpleAccent,
+    Color shadowColor = Colors.grey,
     Widget? icon,
     Radius radius = const Radius.circular(8),
     required Widget child,
+    double opacity = .5,
   }) =>
       _ElevatedCard(
         backgroundColor: backgroundColor,
         icon: icon,
         key: key,
         radius: radius,
+        opacity: opacity,
+        shadowColor: shadowColor,
         child: child,
       );
   factory CardWidget.filled({

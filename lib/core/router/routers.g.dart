@@ -7,23 +7,53 @@ part of 'routers.dart';
 // **************************************************************************
 
 List<RouteBase> get $appRoutes => [
-      $detailRoute,
+      $detailRouteNone,
       $rootRoute,
     ];
 
-RouteBase get $detailRoute => GoRouteData.$route(
+RouteBase get $detailRouteNone => GoRouteData.$route(
       path: '/detail',
-      factory: $DetailRouteExtension._fromState,
+      factory: $DetailRouteNoneExtension._fromState,
+      routes: [
+        GoRouteData.$route(
+          path: 's/:tab',
+          factory: $DetailRouteExtension._fromState,
+        ),
+      ],
     );
 
-extension $DetailRouteExtension on DetailRoute {
-  static DetailRoute _fromState(GoRouterState state) => DetailRoute(
+extension $DetailRouteNoneExtension on DetailRouteNone {
+  static DetailRouteNone _fromState(GoRouterState state) => DetailRouteNone(
         frame: _$convertMapValue(
             'frame', state.uri.queryParameters, _$boolConverter),
       );
 
   String get location => GoRouteData.$location(
         '/detail',
+        queryParams: {
+          if (frame != null) 'frame': frame!.toString(),
+        },
+      );
+
+  void go(BuildContext context) => context.go(location);
+
+  Future<T?> push<T>(BuildContext context) => context.push<T>(location);
+
+  void pushReplacement(BuildContext context) =>
+      context.pushReplacement(location);
+
+  void replace(BuildContext context) => context.replace(location);
+}
+
+extension $DetailRouteExtension on DetailRoute {
+  static DetailRoute _fromState(GoRouterState state) => DetailRoute(
+        tab: state.pathParameters['tab']!,
+        frame: _$convertMapValue(
+            'frame', state.uri.queryParameters, _$boolConverter),
+      );
+
+  String get location => GoRouteData.$location(
+        '/detail/s/${Uri.encodeComponent(tab)}',
         queryParams: {
           if (frame != null) 'frame': frame!.toString(),
         },
